@@ -1,0 +1,8 @@
+[
+    {"name": "HTTP-SICARIO", "description": "L7 ATTACK WEB [HARD]", "duration": "84000"},
+    {"name": "RAW-HTTP", "description": "L7 GOOD CF [NORMAL", "duration": "84000"},
+    {"name": "R9", "description": "L7 GOOD POWER [HARD]", "duration": "84000"},
+    {"name": "HOLD-PANEL", "description": "L7 ATTACK PANEL[HARD]", "duration": "84000"},
+    {"name": "R1", "description": "L7 GOOD BYPASSING [HARD]", "duration": "84000"},
+    {"name": "PRIV-TOR", "description": "L7 GOOD FLOOD [HARD]", "duration": "84000"}
+]
